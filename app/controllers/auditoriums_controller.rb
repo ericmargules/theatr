@@ -1,0 +1,2 @@
+class AuditoriumsController < ApplicationController
+end
