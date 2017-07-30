@@ -5,8 +5,8 @@ Theater Website Project Brief
 ### Database Structure
 ---
 * Movies (Has Many Showtimes)
-	- ID
-	- Title (String)
+	- ID 5
+	- Title (String) Spider-man
 	- Description (Text)
 	- Poster (String(URL))
 	- Rating (String)
@@ -16,7 +16,7 @@ Theater Website Project Brief
 	- ID
 	- Name (String)
 	- Capacity (Integer)
-* Showtimes (Has One Auditorium, Has One Movie)
+* Showtimes (Belongs to Auditorium, Belongs to Movie, Has Many Orders)
 	- ID
 	- Time (Time)
 	- Date (Date)
