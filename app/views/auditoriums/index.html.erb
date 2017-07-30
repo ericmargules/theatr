@@ -1,0 +1,27 @@
+<h1>Auditoriums</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Capacity</th>
+			<th>Now Playing</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @auditoriums.each do |auditorium| %>
+			<tr>
+				<td><%= auditorium.name %></td>
+				<td><%= auditorium.capacity %></td>
+				<td><!-- Auditorium now playing logic --></td>
+				<td><%= link_to 'Edit', edit_auditorium_path(auditorium) %></td>
+				<td><%= link_to 'Delete', auditorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'New', new_auditorium_path %>
+
+

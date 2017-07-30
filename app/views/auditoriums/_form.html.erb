@@ -1,0 +1,27 @@
+<% if @auditorium.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@auditorium.errors.count, "error") %> prohibited this auditorium from being saved:</h2>
+
+    <ul>
+    <% @auditorium.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :capacity %><br>
+  <%= f.number_field :capacity, min: 0 %>
+</div>  
+<div class="field">
+  <%= f.label :now_playing %><br>
+  <!-- Now playing logic goes here -->
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
