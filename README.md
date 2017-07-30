@@ -88,37 +88,37 @@ Theater Website Project Brief
 
 ### Movie Manager
 ---
--Admin can add movies (Movie new/create action)
+* Admin can add movies (Movie new/create action)
 	-Title
 	-Description
 	-Cover image
 	-Rating
 	-Length
 	-Now Playing (boolean)
--Admin can edit movies (Movie edit/update action)
--Admin can remove movies (Movie delete/destroy action)
+* Admin can edit movies (Movie edit/update action)
+* Admin can remove movies (Movie delete/destroy action)
 
 Auditorium Manager
 ---
--Admin can add auditoriums (Auditorium new/create action)
-	-Name
-	-Capacity
-	-Now playing
-		-Generates a dropdown list of movies with Now Playing set to true
-		-Admin selects a movie (or no movie)
-		-Admin selects dates through which the movie will play.
-			-Cannot select past dates
-			-http://www.eyecon.ro/bootstrap-datepicker/	
-		-On create action, starting at theater opening time on first dates selected, showtimes are generated at intervals of 30 minutes longer than the length of the movie until theater closing time minus thirty minutes longer than the length of the movie for each date selected.
--Admin can edit auditoriums (Auditorium edit/update action)
-	-Now playing
-		-Generates a dropdown list of movies with Now Playing set to true. Value auto-filled to movie corresponding to showtimes with current auditorium_id and date.
-		-Admin selects a movie (or no movie)
-		-Admin selects dates through which the movie will play.
-			-Cannot select past dates
-				-JavaScript validation.
-			-http://www.eyecon.ro/bootstrap-datepicker/
-		-On update action, starting with the first date selected, if showtimes corresponding to that auditorium, are removed from the showtime database.
-			-Starting at theater opening time on first date selected, showtimes are generated at intervals of 30 minutes longer than the length of the movie until theater closing time minus thirty minutes longer than the length of the movie.
--Admin can remove auditoriums (Auditorium delete/destroy action)
-	-On destroy action, starting with the current day, if showtimes corresponding to that auditorium, are removed from the showtime database.
+* Admin can add auditoriums (Auditorium new/create action)
+	- Name
+	- Capacity
+	- Now playing
+		* Generates a dropdown list of movies with Now Playing set to true
+		* Admin selects a movie (or no movie)
+		* Admin selects dates through which the movie will play.
+			- Cannot select past dates
+			- http://www.eyecon.ro/bootstrap-datepicker/	
+		* On create action, starting at theater opening time on first dates selected, showtimes are generated at intervals of 30 minutes longer than the length of the movie until theater closing time minus thirty minutes longer than the length of the movie for each date selected.
+* Admin can edit auditoriums (Auditorium edit/update action)
+	- Now playing
+		* Generates a dropdown list of movies with Now Playing set to true. Value auto-filled to movie corresponding to showtimes with current auditorium_id and date.
+		* Admin selects a movie (or no movie)
+		* Admin selects dates through which the movie will play.
+			- Cannot select past dates
+				* JavaScript validation.
+			- http://www.eyecon.ro/bootstrap-datepicker/
+		* On update action, starting with the first date selected, if showtimes corresponding to that auditorium, are removed from the showtime database.
+			- Starting at theater opening time on first date selected, showtimes are generated at intervals of 30 minutes longer than the length of the movie until theater closing time minus thirty minutes longer than the length of the movie.
+* Admin can remove auditoriums (Auditorium delete/destroy action)
+	- On destroy action, starting with the current day, if showtimes corresponding to that auditorium, are removed from the showtime database.
