@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  showtime: one
+  price: 1.5
+  email: MyString
+  cc_num: MyString
+  cc_exp: MyString
+
+two:
+  showtime: two
+  price: 1.5
+  email: MyString
+  cc_num: MyString
+  cc_exp: MyString
