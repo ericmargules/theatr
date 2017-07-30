@@ -7,8 +7,8 @@ Theater Website Project Brief
 * Movies (Has Many Showtimes)
 	- ID
 	- Title (String)
-	- Description (String)
-	- Cover Image (String(URL))
+	- Description (Text)
+	- Poster (String(URL))
 	- Rating (String)
 	- Length (Integer(Minutes))
 	- Now Playing (Boolean)

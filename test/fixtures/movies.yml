@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  poster: MyString
+  rating: MyString
+  length: 1
+  now_playing: false
+
+two:
+  title: MyString
+  description: MyText
+  poster: MyString
+  rating: MyString
+  length: 1
+  now_playing: false
