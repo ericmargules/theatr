@@ -1,0 +1,33 @@
+<h1>Showtimes</h1>
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Auditorium</th>
+			<th>Movie</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Seats Remaining</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @showtimes.each do |showtime| %>
+			<tr>
+				<td><%= showtime.id %></td>
+				<td><%= showtime.auditorium.name %></td>
+				<td><%= showtime.movie.title %></td>
+				<td><%= showtime.date %></td>
+				<td><%= showtime.time %></td>
+				<td><%= showtime.auditorium.capacity - Order.where(showtime_id: showtime.id).count %></td>
+				<td><%= link_to 'Edit', edit_showtime_path(showtime) %></td>
+				<td><%= link_to 'Delete', showtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'New', new_showtime_path %>
+
+

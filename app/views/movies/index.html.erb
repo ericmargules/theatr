@@ -3,6 +3,7 @@
 	<thead>
 		<tr>
 			<th></th>
+			<th>ID</th>
 			<th>Title</th>
 			<th>Length</th>
 			<th>Rating</th>
@@ -15,6 +16,7 @@
 		<% @movies.each do |movie| %>
 			<tr>
 				<td><!-- movie poster goes here --></td>
+				<td><%= movie.id %></td>
 				<td><%= movie.title %></td>
 				<td><%= movie.length %></td>
 				<td><%= movie.rating %></td>

@@ -1,0 +1,7 @@
+<h1>Edit showtime</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @showtime %>
+<%= link_to 'Delete', @showtime, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', showtimes_path %>

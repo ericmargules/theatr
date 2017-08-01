@@ -1,0 +1,9 @@
+<h1><%= @showtime.movie.title %></h1>
+
+<h2><%= @showtime.auditorium.name %></h2>
+<h2><%= @showtime.date %></h2>
+<h2><%= @showtime.time %></h2>
+<h2><!-- Seats Remaining Logic --></h2>
+
+<%= link_to 'Edit', edit_showtime_path %>
+<%= link_to 'Back', showtimes_path %>

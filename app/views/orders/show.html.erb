@@ -1,11 +1,10 @@
-<h1><%= @order.showtime.movie %></h1>
+<h1><%= @order.showtime.movie.title %></h1>
 
 <h2><%= @order.showtime.date %></h2>
 <h2><%= @order.showtime.time %></h2>
 <h2><%= @order.price %></h2>
 <h2><%= @order.email %></h2>
-<h2><%= @order.length %></h2>
-<h2><%= @order.description %></h2>
 
 <%= link_to 'Edit', edit_order_path %>
+<%= link_to 'Delete', @order, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', orders_path %>
