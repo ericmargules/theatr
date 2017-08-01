@@ -10,6 +10,7 @@
 			<th>Now Playing</th>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,6 +22,7 @@
 				<td><%= movie.length %></td>
 				<td><%= movie.rating %></td>
 				<td><%= movie.now_playing %></td>
+				<td><%= link_to 'Add Showtimes', new_showtime_path(:movie => movie.id) %></td>
 				<td><%= link_to 'Edit', edit_movie_path(movie) %></td>
 				<td><%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>

@@ -10,15 +10,21 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :price, 'Total: $15' %><br>
+    <%= f.hidden_field :price, :value => 15 %>
+  </div>
+  
+  <% if @showtime %>
+      <%= f.hidden_field :showtime_id, :value => @showtime.id %>
+  <% else %>
+    <div class="field">
+      <%= f.label :showtime %><br>
+      <%= f.number_field :showtime_id, min: 0 %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :showtime %><br>
-    <%= f.number_field :showtime_id %>
-  </div>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
@@ -32,6 +38,6 @@
     <%= f.number_field :cc_exp, max: 9999 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Place order' %>
   </div>
 <% end %>

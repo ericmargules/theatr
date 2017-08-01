@@ -10,6 +10,8 @@ class ShowtimesController < ApplicationController
 
 	def new
 		@showtime = Showtime.new
+		@auditorium = Auditorium.find(params[:auditorium]) if params[:auditorium]	
+		@movie = Movie.find(params[:movie]) if params[:movie]
 	end
 
 	def edit

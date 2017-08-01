@@ -11,21 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :movie %><br>
-    <%= f.select :movie_id, options_for_select(Movie.all.map{|m|[m.title, m.id]}) %>
-  </div>
-  <div class="field">
-    <%= f.label :auditorium %><br>
-    <%= f.select :auditorium_id, options_for_select(Auditorium.all.map{|a|[a.name, a.id]}) %>
-  </div>
+  <% if @movie %>
+      <%= f.label :movie, @movie.title %><br>
+      <%= f.hidden_field :movie_id, :value => @movie.id %>
+  <% else %>
+    <div class="field">
+      <%= f.label :movie %><br>
+      <%= f.select :movie_id, options_for_select(Movie.all.map{|m|[m.title, m.id]}), {include_blank: true} %>
+    </div>
+  <% end %>
+
+  <% if @auditorium %>
+      <%= f.label :auditorium, @auditorium.name %><br>
+      <%= f.hidden_field :auditorium_id, :value => @auditorium.id %>
+  <% else %>
+    <div class="field">
+      <%= f.label :auditorium %><br>
+      <%= f.select :auditorium_id, options_for_select(Auditorium.all.map{|a|[a.name, a.id]}), {include_blank: true} %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :use_month_numbers => true %>
+    <%= f.date_select :date, :start_year => Date.today.year, :end_year => (Date.today.year+1), :use_month_numbers => true %>
   </div>
   <div class="field">
     <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    <%= f.time_select :time, {minute_step: 15, ampm: true, ignore_date: true} %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -8,6 +8,7 @@
 			<th>Now Playing</th>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,6 +22,7 @@
   						<%= select("begin_showing" , "written_on", @movies) %>
 					</div>
 				</td>
+				<td><%= link_to 'Add Showtimes', new_showtime_path(:auditorium => auditorium.id) %></td>
 				<td><%= link_to 'Edit', edit_auditorium_path(auditorium) %></td>
 				<td><%= link_to 'Delete', auditorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>
