@@ -1,6 +1,7 @@
 class AuditoriumsController < ApplicationController
 	before_action :set_auditorium, only: [:show, :edit, :update, :destroy]
-	
+	before_action :now_playing, only: [:index]
+
 	def index
 		@auditoriums = Auditorium.all
 	end
@@ -57,5 +58,13 @@ class AuditoriumsController < ApplicationController
 	
 	def auditorium_params
 		params.require(:auditorium).permit(:name, :capacity)
+	end
+
+	def now_playing
+		movies = Movie.where(now_playing: true)
+		@movies = ["None"]
+		movies.each do |movie|
+			@movies << movie.title
+		end
 	end
 end

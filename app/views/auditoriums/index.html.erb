@@ -14,7 +14,11 @@
 			<tr>
 				<td><%= auditorium.name %></td>
 				<td><%= auditorium.capacity %></td>
-				<td><!-- Auditorium now playing logic --></td>
+				<td>
+					<div class="field">
+  						<%= select("begin_showing" , "written_on", @movies) %>
+					</div>
+				</td>
 				<td><%= link_to 'Edit', edit_auditorium_path(auditorium) %></td>
 				<td><%= link_to 'Delete', auditorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			</tr>

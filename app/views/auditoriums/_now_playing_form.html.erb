@@ -1,0 +1,12 @@
+<div class="field">
+  <%= label_tag :now_playing %><br>
+  <%= select("begin_showing" , "written_on", @movies) %><br>
+</div>
+<div class="field">
+  <%= label_tag :begin_showing %><br>
+  <%= date_select("begin_showing" , "written_on", :start_year => 2017, :end_year => 2020, :order => [:month, :day, :year], :use_short_month => true)  %><br>
+</div>
+<div class="field">
+  <%= label_tag :stop_showing %><br>
+  <%= date_select("stop_showing" , "written_on", :start_year => 2017, :end_year => 2020, :order => [:month, :day, :year], :use_short_month => true)  %>
+</div>

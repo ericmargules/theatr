@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730171627) do
+ActiveRecord::Schema.define(version: 20170801000130) do
 
   create_table "auditoria", force: :cascade do |t|
     t.string   "name"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20170730171627) do
     t.float    "price"
     t.string   "email"
     t.string   "cc_num"
-    t.string   "cc_exp"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "cc_exp"
     t.index ["showtime_id"], name: "index_orders_on_showtime_id"
   end
 

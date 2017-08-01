@@ -4,6 +4,8 @@
 	<%= render 'form', f: f %>
 <% end %>
 
+<%= render 'now_playing_form' %>
+
 <%= link_to 'Show', @auditorium %>
 <%= link_to 'Delete', @auditorium, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', auditoriums_path %>
