@@ -1,0 +1,164 @@
+<h1>Admin Panel</h1>
+
+<div id="admin_panel movies">
+	<h2>Movies</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Length</th>
+				<th>Rating</th>
+				<th>Now Playing</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @movies.each do |movie| %>
+				<tr>
+					<td><!-- movie poster goes here --></td>
+					<td><%= movie.id %></td>
+					<td><%= movie.title %></td>
+					<td><%= movie.length %></td>
+					<td><%= movie.rating %></td>
+					<td><%= movie.now_playing %></td>
+					<td><%= link_to 'Add Showtimes', new_showtime_path(:movie => movie.id) %></td>
+					<td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+					<td><%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to 'New', new_movie_path %>
+</div>
+
+<div id="admin_panel auditoriums">
+	<h2>Auditoriums</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Capacity</th>
+				<th>Now Playing</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @auditoriums.each do |auditorium| %>
+				<tr>
+					<td><%= auditorium.id %></td>
+					<td><%= auditorium.name %></td>
+					<td><%= auditorium.capacity %></td>
+					<td>
+						<div>
+	  						<% show = Showtime.where(auditorium: auditorium, date: Date.today) %>
+	  						<%= !show.empty? ? show[0].movie.title : "No Showtimes" %>
+						</div>
+					</td>
+					<td><%= link_to 'Add Showtimes', new_showtime_path(:auditorium => auditorium.id) %></td>
+					<td><%= link_to 'Edit', edit_auditorium_path(auditorium) %></td>
+					<td><%= link_to 'Delete', auditorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to 'New', new_auditorium_path %>
+</div>
+
+<div id="admin_panel showtimes">
+	<h2>Showtimes</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Auditorium</th>
+				<th>Movie</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Seats Remaining</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @showtimes.each do |showtime| %>
+				<tr>
+					<td><%= showtime.id %></td>
+					<td><%= showtime.auditorium.name %></td>
+					<td><%= showtime.movie.title %></td>
+					<td><%= showtime.date %></td>
+					<td><%= showtime.time %></td>
+					<td><%= showtime.auditorium.capacity - Order.where(showtime_id: showtime.id).count %></td>
+					<td><%= link_to 'Edit', edit_showtime_path(showtime) %></td>
+					<td><%= link_to 'Delete', showtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to 'New', new_showtime_path %>
+</div>
+
+<div id="admin_panel orders">
+	<h2>Orders</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Movie</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Email</th>
+				<th>Price</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.showtime.movie.title %></td>
+					<td><%= order.showtime.date %></td>
+					<td><%= order.showtime.time %></td>
+					<td><%= order.email %></td>
+					<td><%= order.price %></td>
+					<td><%= link_to 'Edit', edit_order_path(order) %></td>
+					<td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<br><br>
+	<% @movies.each do |movie| %>
+		<div>
+			<h2><%= movie.title %></h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Email</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% movie.orders.each do |order| %>
+						<tr>
+							<td><%= order.showtime.date %></td>
+							<td><%= order.showtime.time %></td>
+							<td><%= order.email %></td>
+							<td><%= order.price %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	<% end %>
+</div>

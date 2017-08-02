@@ -17,4 +17,11 @@ class WelcomeController < ApplicationController
 			day += 1
 		end
 	end
+
+	def admin
+		@auditoriums = Auditorium.all
+		@movies = Movie.all
+		@showtimes = Showtime.all
+		@orders = Order.all
+	end
 end
