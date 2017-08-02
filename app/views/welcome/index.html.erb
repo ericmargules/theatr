@@ -14,9 +14,9 @@
 				<%= movie %>: 
 				<% showtimes.each do |showtime| %>
 					<% if showtime[1] > 0 %>
-						<%= link_to showtime[0], new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0])[0].id) %>  
+						<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0], date: today)[0] ) %>  
 					<% else %>
-						<%= showtime[0] %>
+						<%= showtime[0].strftime("%-I:%M%p") %>
 					<% end %> 
 				<% end %>
 				</p>

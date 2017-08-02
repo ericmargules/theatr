@@ -32,12 +32,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date, :start_year => Date.today.year, :end_year => (Date.today.year+1), :use_month_numbers => true %>
+    <%= f.label :begin, 'Start date' %><br>
+    <%= f.date_select(:begin, {:start_year => Date.today.year, :end_year => (Date.today.year+1), :order => [:month, :day, :year]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :end, 'End date' %><br>
+    <%= f.date_select(:end, {:start_year => Date.today.year, :end_year => (Date.today.year+1), :order => [:month, :day, :year]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :allday, 'All day?' %><br>
+    <%= f.check_box :allday, {checked: true} %>
   </div>
   <div class="field">
     <%= f.label :time %><br>
-    <%= f.time_select :time, {minute_step: 15, ampm: true, ignore_date: true} %>
+    <%= f.time_select :time, {minute_step: 15, ampm: true} %>
   </div>
   <div class="actions">
     <%= f.submit %>

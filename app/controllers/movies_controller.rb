@@ -42,6 +42,9 @@ class MoviesController < ApplicationController
 	end
 
 	def destroy
+		Showtime.where(movie: @movie).each do |showtime|
+			showtime.destroy
+		end
 		@movie.destroy
 		respond_to do |format|
 			format.html { redirect_to movies_url, notice: 'Movie was removed successfully.' }

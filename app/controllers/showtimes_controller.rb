@@ -19,16 +19,8 @@ class ShowtimesController < ApplicationController
 
 	def create
 		@showtime = Showtime.new(showtime_params)
-
-		respond_to do |format|
-			if @showtime.save
-				format.html { redirect_to @showtime, notice: 'Showtime was successfully created.' }
-				format.json { render :show, status: :created, location: @showtime }
-			else
-				format.html { render :new }
-				format.json { render json: @showtime.errors, status: :unprocessable_entity }
-			end
-		end
+		begin_and_end
+		redirect_to showtimes_path
 	end
 
 	def update
@@ -44,6 +36,9 @@ class ShowtimesController < ApplicationController
 	end
 
 	def destroy
+		Order.where(showtime: @showtime).each do |order|
+			order.destroy
+		end
 		@showtime.destroy
 		respond_to do |format|
 			format.html { redirect_to showtimes_url, notice: 'Showtime was removed successfully.' }
@@ -58,6 +53,36 @@ class ShowtimesController < ApplicationController
 	end
 
 	def showtime_params
-		params.require(:showtime).permit(:movie_id, :auditorium_id, :date, :time)
+		params.require(:showtime).permit(:movie_id, :auditorium_id, :date, :time, :begin, :end, :allday)
+	end
+
+	def begin_and_end
+		(((parse_date(@showtime.end) - parse_date(@showtime.begin)).to_i) + 1).times do |int|
+			parse_allday(int)
+		end
+	end
+
+	def parse_date(hash)
+		(Date.parse(hash.to_a.sort.collect{|c| c[1]}.join("-")))
+	end
+
+	def parse_allday(int)
+		if @showtime.allday != "0"
+			time = Time.new(parse_date(@showtime.begin).year, parse_date(@showtime.begin).month, parse_date(@showtime.begin).day, "+12:00")
+			closing = Time.new(parse_date(@showtime.begin).year, parse_date(@showtime.begin).month, parse_date(@showtime.begin).day, "+23:00")
+			movie_length = @showtime.movie.length + 30
+			until (time + movie_length.minutes) > closing
+				@showtimes = Showtime.new(showtime_params)
+				Time.current.dst? ? @showtimes.time = time.utc + 1.hour : @showtimes.time = time.utc
+				@showtimes.date = (parse_date(@showtime.begin) + int.days)
+				time = time + movie_length.minutes
+				@showtimes.save
+			end
+		else
+			@showtimes = Showtime.new(showtime_params)
+			@showtimes.date = (parse_date(@showtime.begin) + int.days)
+			Time.current.dst? ? @showtimes.time = @showtime.time.utc + 1.hour : @showtimes.time = @showtime.time.utc
+			@showtimes.save
+		end
 	end
 end
