@@ -1,4 +1,5 @@
 class AuditoriumsController < ApplicationController
+	before_action :user_admin
 	before_action :set_auditorium, only: [:show, :edit, :update, :destroy]
 	before_action :now_playing, only: [:index]
 

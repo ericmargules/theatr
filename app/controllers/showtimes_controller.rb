@@ -1,4 +1,5 @@
 class ShowtimesController < ApplicationController
+	before_action :user_admin
 	before_action :set_showtime, only: [:show, :edit, :update, :destroy]
 	
 	def index

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	before_action :user_admin, except: [:new]
 	before_action :set_order, only: [:show, :edit, :update, :destroy]
 	
 	def index

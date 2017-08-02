@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+	before_action :user_admin, except: [:index]
+
 	def index
 		@days = []
 		day = Date.today
