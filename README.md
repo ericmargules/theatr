@@ -126,8 +126,11 @@ Auditorium Manager
 
 Admin Login
 ---
-## Admin dashboard URL: theatr.herokuapp.com/users/sign_in
+### Admin dashboard URL: 
+theatr.herokuapp.com/users/sign_in
 
-## Email: admin@theatr.com
+### Email: 
+admin@theatr.com
 
-## Password: baklavaparachute
+### Password: 
+baklavaparachute
