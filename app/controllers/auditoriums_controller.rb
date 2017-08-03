@@ -22,7 +22,7 @@ class AuditoriumsController < ApplicationController
 
 		respond_to do |format|
 			if @auditorium.save
-				format.html { redirect_to @auditorium, notice: 'Auditorium was successfully created.' }
+				format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Auditorium was successfully created.' }
 				format.json { render :show, status: :created, location: @auditorium }
 			else
 				format.html { render :new }
@@ -34,7 +34,7 @@ class AuditoriumsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @auditorium.update(auditorium_params)
-				format.html { redirect_to @auditorium, notice: 'Auditorium was successfully updated.' }
+				format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Auditorium was successfully updated.' }
 				format.json { render :show, status: :ok, location: @auditorium }
 			else
 				format.html { render :edit }
@@ -49,7 +49,7 @@ class AuditoriumsController < ApplicationController
 		end
 		@auditorium.destroy
 		respond_to do |format|
-			format.html { redirect_to auditoriums_url, notice: 'Auditorium was removed successfully.' }
+			format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Auditorium was removed successfully.' }
 			format.json { head :no_content }
 		end
 	end

@@ -2,7 +2,8 @@
 
 <h2><%= @auditorium.capacity %></h2>
 <h2><!-- Auditorium now playing logic --></h2>
+<h2><%= link_to 'Add Showtimes', new_showtime_path(:auditorium => @auditorium.id) %></h2>
 
 <%= link_to 'Edit', edit_auditorium_path %>
 <%= link_to 'Delete', @auditorium, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', auditoriums_path %>
+<%= link_to 'Back', user_root_path %>

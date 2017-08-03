@@ -21,13 +21,13 @@ class ShowtimesController < ApplicationController
 	def create
 		@showtime = Showtime.new(showtime_params)
 		begin_and_end
-		redirect_to showtimes_path
+		redirect_to :controller => 'welcome', :action => 'admin'
 	end
 
 	def update
 		respond_to do |format|
 			if @showtime.update(showtime_params)
-				format.html { redirect_to @showtime, notice: 'Showtime was successfully updated.' }
+				format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Showtime was successfully updated.' }
 				format.json { render :show, status: :ok, location: @showtime }
 			else
 				format.html { render :edit }
@@ -42,7 +42,7 @@ class ShowtimesController < ApplicationController
 		end
 		@showtime.destroy
 		respond_to do |format|
-			format.html { redirect_to showtimes_url, notice: 'Showtime was removed successfully.' }
+			format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Showtime was removed successfully.' }
 			format.json { head :no_content }
 		end
 	end

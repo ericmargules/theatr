@@ -6,5 +6,5 @@
 <h2><%= @showtime.auditorium.capacity - Order.where(showtime_id: @showtime.id).count %></h2>
 
 <%= link_to 'Edit', edit_showtime_path %>
-<%= link_to 'Delete', @showtime, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', showtimes_path %>
+<%= link_to 'Delete', @showtime, controller: :showtime, action: :destroy, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', user_root_path %>

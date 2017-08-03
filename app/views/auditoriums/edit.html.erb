@@ -1,11 +1,8 @@
 <h1>Edit Auditorium</h1>
 
-<%= form_for @auditorium, url: auditorium_path(@auditorium), html: {method: :put} do |f| %>
-	<%= render 'form', f: f %>
-<% end %>
+	<%= render 'form' %>
 
-<%= render 'now_playing_form' %>
 
 <%= link_to 'Show', @auditorium %>
 <%= link_to 'Delete', @auditorium, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', auditoriums_path %>
+<%= link_to 'Back', user_root_path %>
