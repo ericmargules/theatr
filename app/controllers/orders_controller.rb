@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
 		respond_to do |format|
 			if @order.save
-				format.html { redirect_to @order, notice: 'Order was successfully created.' }
+				format.html { redirect_to root_path, alert: "Thank you for your order. Your receipt has been emailed to you." }
 				format.json { render :show, status: :created, location: @order }
 			else
 				format.html { render :new }
