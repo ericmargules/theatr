@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
 	before_action :user_admin, except: [:new]
-	before_action :set_order, only: [:show, :edit, :update, :destroy]
+	before_action :set_order, only: [:show, :edit, :update, :destroy]	
+
+	layout :resolve_layout
 	
 	def index
 		@orders = Order.all
@@ -10,6 +12,7 @@ class OrdersController < ApplicationController
 	end
 
 	def new
+		redirect_to root_path if !params[:showtime]
 		@order = Order.new
 		@showtime = Showtime.find(params[:showtime]) if params[:showtime]
 	end
@@ -60,5 +63,12 @@ class OrdersController < ApplicationController
 	def order_params
 		params.require(:order).permit(:showtime_id, :price, :email, :cc_num, :cc_exp)
 	end
-
+	def resolve_layout
+	    case action_name
+	      when "new"
+	        "order"
+	      else
+	        "theatr"
+	    end
+	end 
 end

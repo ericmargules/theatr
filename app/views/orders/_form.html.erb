@@ -38,6 +38,6 @@
     <%= f.number_field :cc_exp, max: 9999 %>
   </div>
   <div class="actions">
-    <%= f.submit 'Place order' %>
+    <%= f.submit 'Place order', :id => 'place_order', :class => 'submit_button' %>
   </div>
 <% end %>
