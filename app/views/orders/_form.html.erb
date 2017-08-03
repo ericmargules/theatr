@@ -27,15 +27,15 @@
 
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "required" %>
   </div>
   <div class="field">
     <%= f.label :cc_num %><br>
-    <%= f.text_field :cc_num %>
+    <%= f.text_field :cc_num, :class => "required"  %>
   </div>
   <div class="field">
     <%= f.label :cc_exp %><br>
-    <%= f.number_field :cc_exp, max: 9999 %>
+    <%= f.number_field :cc_exp, max: 9999, :class => "required"  %>
   </div>
   <div class="actions">
     <%= f.submit 'Place order', :id => 'place_order', :class => 'submit_button' %>
