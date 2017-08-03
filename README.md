@@ -122,3 +122,11 @@ Auditorium Manager
 			- Starting at theater opening time on first date selected, showtimes are generated at intervals of 30 minutes longer than the length of the movie until theater closing time minus thirty minutes longer than the length of the movie.
 * Admin can remove auditoriums (Auditorium delete/destroy action)
 	- On destroy action, starting with the current day, if showtimes corresponding to that auditorium, are removed from the showtime database.
+
+
+Admin Login
+---
+To log into the admin dashboard:
+theatr.herokuapp.com/users/sign_in
+#Email: admin@theatr.com
+#Password: baklavaparachute
