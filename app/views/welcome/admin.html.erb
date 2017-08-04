@@ -137,9 +137,9 @@
 	</table>
 	<br><br>
 	<h2>Orders By Movie</h2>
-	<%= select_tag(:movie_id, options_for_select(@movies.map{|m|[m.title]})) %>
+	<%= select_tag(:movie_id, options_for_select(@movies.map{|m|[m.title, ("movie_" + m.id.to_s)]})) %>
 	<% @movies.each do |movie| %>
-		<div class="orders_by_movie hidden">
+		<div id=<%= ("movie_" + movie.id.to_s) %> class="orders_by_movie hidden">
 			<h2><%= movie.title %></h2>
 			<table>
 				<thead>

@@ -1,19 +1,19 @@
-function parseDay(link){
-	var npDivs = $(".showing_day");
-	npDivs.each(function(){
+function orderByMovie(){
+	var selectValue = $("#movie_id")[0].value;
+	$(".orders_by_movie").each(function(){
 		if($(this).hasClass("hidden") == false){
 			$(this).toggleClass("hidden");
 		};
 	});
-	var dayInt = parseInt(link.id[link.id.length-1]);
-	npDivs[dayInt].className = "showing_day"
+
+	$('div#' + $("#movie_id")[0].value).toggleClass("hidden");
 }
 
 $(document).ready(function(){
 	
-	$(".np_nav_button").on("click", function(){
-			parseDay($(this)[0]);
-			return false;	
+	orderByMovie();
+	$("#movie_id").on("change", function(){
+		orderByMovie();
 	})
 
 });
