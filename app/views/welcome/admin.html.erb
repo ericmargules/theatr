@@ -73,40 +73,6 @@
 	<%= link_to 'New', new_auditorium_path %>
 </div>
 
-<div id="admin_panel showtimes">
-	<h2>Showtimes</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Auditorium</th>
-				<th>Movie</th>
-				<th>Date</th>
-				<th>Time</th>
-				<th>Seats Remaining</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @showtimes.each do |showtime| %>
-				<tr>
-					<td><%= showtime.id %></td>
-					<td><%= showtime.auditorium.name %></td>
-					<td><%= showtime.movie.title %></td>
-					<td><%= showtime.date %></td>
-					<td><%= showtime.time %></td>
-					<td><%= showtime.auditorium.capacity - Order.where(showtime_id: showtime.id).count %></td>
-					<td><%= link_to 'Edit', edit_showtime_path(showtime) %></td>
-					<td><%= link_to 'Delete', showtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-
-	<%= link_to 'New', new_showtime_path %>
-</div>
-
 <div id="admin_panel orders">
 	<h2>Orders</h2>
 	<table>
@@ -140,7 +106,6 @@
 	<%= select_tag(:movie_id, options_for_select(@movies.map{|m|[m.title, ("movie_" + m.id.to_s)]})) %>
 	<% @movies.each do |movie| %>
 		<div id=<%= ("movie_" + movie.id.to_s) %> class="orders_by_movie hidden">
-			<h2><%= movie.title %></h2>
 			<table>
 				<thead>
 					<tr>
@@ -163,4 +128,38 @@
 			</table>
 		</div>
 	<% end %>
+</div>
+
+<div id="admin_panel showtimes">
+	<h2>Showtimes</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Auditorium</th>
+				<th>Movie</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Seats Remaining</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @showtimes.each do |showtime| %>
+				<tr>
+					<td><%= showtime.id %></td>
+					<td><%= showtime.auditorium.name %></td>
+					<td><%= showtime.movie.title %></td>
+					<td><%= showtime.date %></td>
+					<td><%= showtime.time %></td>
+					<td><%= showtime.auditorium.capacity - Order.where(showtime_id: showtime.id).count %></td>
+					<td><%= link_to 'Edit', edit_showtime_path(showtime) %></td>
+					<td><%= link_to 'Delete', showtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<%= link_to 'New', new_showtime_path %>
 </div>
