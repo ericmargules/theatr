@@ -31,10 +31,12 @@ class WelcomeController < ApplicationController
 
 	def resolve_layout
 	    case action_name
-	      when "index"
-	        "root"
-	      else
-	        "theatr"
+	    	when "index"
+	    		"root"
+			when "admin"
+	        	"admin"
+	    	else
+	        	"theatr"
 	    end
 	end 
 end

@@ -15,3 +15,4 @@
 //= require_tree .
 //= stub order
 //= stub root
+//= stub admin

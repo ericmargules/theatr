@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( order.js )
 Rails.application.config.assets.precompile += %w( root.js )
+Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile += %w( order.css )
 Rails.application.config.assets.precompile += %w( theatr.css )
 
