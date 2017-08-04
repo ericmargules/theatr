@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
 	before_action :user_admin, except: [:index]
 
+	layout :resolve_layout
+
 	def index
 		@days = []
 		day = Date.today
@@ -24,4 +26,15 @@ class WelcomeController < ApplicationController
 		@showtimes = Showtime.all
 		@orders = Order.all
 	end
+
+	private
+
+	def resolve_layout
+	    case action_name
+	      when "index"
+	        "root"
+	      else
+	        "theatr"
+	    end
+	end 
 end

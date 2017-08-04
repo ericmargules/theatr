@@ -2,9 +2,13 @@
 
 <h2>Now Playing</h2>
 
+<% 7.times do |int| %>
+<a href="#" id='day_<%= int %>' class="np_nav_button">Day <%= int %></a>
+<% end %>
+
 <% today = Date.today %>
 <% @days.each do |day| %>
-	<div class="showing_day">
+	<%= today == Date.today ? '<div class="showing_day">'.html_safe : '<div class="showing_day hidden">'.html_safe %>
 		<h2><%= today==Date.today ? "Today" : today.strftime('%B %-d, %Y') %></h2>
 		<% if day.empty? %>
 			There are no showtimes for this day.
