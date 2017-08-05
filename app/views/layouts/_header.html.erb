@@ -1,9 +1,14 @@
 <header>
-	<% if user_signed_in? %>
-		<div>
-	    	<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-		</div>
-	<% end %>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<nav id="topnav">
+		<a href="" id=logo>
+			<span>Theatr</span>
+		</a>
+		<% if user_signed_in? %>
+			<div>
+		    	<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+			</div>
+		<% end %>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+	</nav>
 </header>

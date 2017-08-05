@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 	layout :resolve_layout
 
 	def index
+		@movies = Movie.where(now_playing: true)
 		@days = []
 		day = Date.today
 		7.times do

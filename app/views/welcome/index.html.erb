@@ -1,4 +1,6 @@
-<h1>LaunchPad Lab Theater</h1>
+<div id="movie_showcase">
+	<% @movies.each do |movie| %><div class="movie_poster"><%= image_tag(movie.poster, :class => "poster_image") %></div><% end -%>
+</div>
 
 <h2>Now Playing</h2>
 
