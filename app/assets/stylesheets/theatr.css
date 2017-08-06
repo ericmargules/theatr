@@ -40,7 +40,7 @@ p {
 
 .movie_poster{
 	display: inline-block;
-	width: 25%;
+	width: 100%;
 	position: relative;
 	overflow: hidden;
 }

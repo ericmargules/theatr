@@ -16,3 +16,4 @@
 //= stub order
 //= stub root
 //= stub admin
+//= stub owl.carousel.min

@@ -1,5 +1,6 @@
-<div id="movie_showcase">
-	<% @movies.each do |movie| %><div class="movie_poster"><div class="poster_description">
+<div class="owl-carousel" id="home_carousel">
+	<% @movies.each do |movie| %><div class="movie_poster">
+		<div class="poster_description">
 			<div class="playing description_field">
 				Now Playing
 			</div>
@@ -10,11 +11,11 @@
 				<button class="get_tickets">Get Tickets</button>
 			</div>
 		</div>
-			<%= link_to(movie) do %>
-				<%= image_tag(movie.poster, :class => "poster_image grow") %>
-			<% end %>
-		</div><% end %>
-		
+		<%= link_to(movie) do %>
+			<%= image_tag(movie.poster, :class => "poster_image grow") %>
+		<% end %>
+	</div>
+	<% end %>
 </div>
 
 <h2>Now Playing</h2>

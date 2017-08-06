@@ -6,8 +6,10 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( order.js )
 Rails.application.config.assets.precompile += %w( root.js )
 Rails.application.config.assets.precompile += %w( admin.js )
+Rails.application.config.assets.precompile += %w( owl.carousel.min.js )
 Rails.application.config.assets.precompile += %w( order.css )
 Rails.application.config.assets.precompile += %w( theatr.css )
+Rails.application.config.assets.precompile += %w( owl.carousel.min.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
