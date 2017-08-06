@@ -1,5 +1,20 @@
 <div id="movie_showcase">
-	<% @movies.each do |movie| %><div class="movie_poster"><%= image_tag(movie.poster, :class => "poster_image") %></div><% end -%>
+	<% @movies.each do |movie| %><div class="movie_poster"><div class="poster_description">
+			<div class="playing description_field">
+				Now Playing
+			</div>
+			<div class="movie_title description_field">
+				<%= link_to movie.title, movie_path(movie), :class => "movie_title" %>
+			</div>
+			<div class="buy_tickets description_field">
+				<button class="get_tickets">Get Tickets</button>
+			</div>
+		</div>
+			<%= link_to(movie) do %>
+				<%= image_tag(movie.poster, :class => "poster_image grow") %>
+			<% end %>
+		</div><% end %>
+		
 </div>
 
 <h2>Now Playing</h2>

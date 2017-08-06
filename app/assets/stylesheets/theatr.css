@@ -40,30 +40,88 @@ p {
 
 .movie_poster{
 	display: inline-block;
-	font-size: 0;
 	width: 25%;
+	position: relative;
+	overflow: hidden;
 }
 
 .poster_image {
+	vertical-align: middle;
 	width: 100%;
-	background-color: purple;
 }
 
-.movie_poster:after {
+.movie_poster > a:after {
 	display: inline-block;
-	position: relative;
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 150%);
-	margin-top: -500px;
-	height: 500px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 130%);
+	margin-top: -25vw;
+	height: 25vw;
 	width: 100%;
 	content: '';
-	-webkit-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	pointer-events: none;
 }
 
-.movie_poster:hover:after {
+.movie_poster > a:hover:after {
 	opacity: 0;
 }
+
+.poster_description {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0 1em 1em 1em;
+	text-align: left;
+	color: #fff;
+	z-index: 100;
+	font-size: 2em;
+}
+
+.description_field{
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+}
+
+.playing {
+	font-size: .45em;
+	letter-spacing: .15em;
+	color: #6cc1c1;
+}
+
+.movie_title {
+	font-weight: 300;
+	font-size: .88em;
+	color: #fff;
+}
+
+.movie_title:hover {
+	color: #fff;
+}
+
+.get_tickets {
+	color: #fff;
+	font-size: .44em;
+	letter-spacing: .12em;
+	background: 0;
+	border: 2px solid #fff;
+	padding: .9em;
+	margin-top: .75em;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.get_tickets:hover {
+	border: 2px solid #6cc1c1;
+	color: #6cc1c1;
+}
+
+.grow { transition: all .75s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
 
 #logo {
 	font-family: 'Raleway', sans-serif;
