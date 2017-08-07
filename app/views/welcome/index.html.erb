@@ -21,7 +21,19 @@
 <h2>Now Playing</h2>
 
 <% 7.times do |int| %>
-<a href="#" id='day_<%= int %>' class="np_nav_button">Day <%= int %></a>
+	<a href="#" id='day_<%= int %>' class="np_nav_button">
+		<div class="np_date_select">
+			<div class="weekday">
+				<%= int == 0 ? "Today".html_safe : (Date.today + int).strftime('%a') %>
+			</div> 
+			<div class="month">
+				<%= (Date.today + int).strftime('%b') %>
+			</div>
+			<div class="day">
+				<%= (Date.today + int).day %>
+			</div>
+		</div>
+	</a>
 <% end %>
 
 <% today = Date.today %>

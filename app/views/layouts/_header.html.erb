@@ -1,8 +1,8 @@
 <header>
 	<nav id="topnav">
-		<a href="" id=logo>
+		<%= link_to(root_path, :id => "logo") do %>
 			<span>Theatr</span>
-		</a>
+		<% end %>
 		<% if user_signed_in? %>
 			<div>
 		    	<%= link_to "Log out", destroy_user_session_path, method: :delete %>

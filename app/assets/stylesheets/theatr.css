@@ -88,14 +88,14 @@ p {
 }
 
 .playing {
-	font-size: .45em;
+	font-size: .4em;
 	letter-spacing: .15em;
 	color: #6cc1c1;
 }
 
 .movie_title {
 	font-weight: 300;
-	font-size: .88em;
+	font-size: .8em;
 	color: #fff;
 }
 
@@ -141,4 +141,46 @@ p {
 
 .hidden {
 	display: none;
+}
+
+.main_poster {
+	max-width: 500px;
+}
+
+.np_date_select{
+	display: inline-block;
+	height: 6.5em;
+    width: 6.5em;
+    background-color: #0c1917;
+}
+
+.weekday, .month, .day {
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}	
+
+.month, .day {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.1em;
+}
+
+.weekday {
+	margin: 1em 0 .75em 0;
+	color: #6cc1c1;
+	font-weight: 300;
+	font-size: .9em;
+}
+
+@media screen and (max-width:800px){
+
+	#logo {
+		margin-left: 0;
+	}
+
+	.movie_poster > a::after {
+	    margin-top: -35vw;
+	    height: 35vw;
+	}
 }
