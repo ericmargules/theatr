@@ -18,30 +18,34 @@
 	<% end %>
 </div>
 
-<h2>Now Playing</h2>
+<div id="now_playing_gallery">
+	<div id="now_playing_header">
+		<span>Now Playing</span>
+	</div>
+	<div id="now_playing_content">
+		<% 7.times do |int| %><a href="#" id='day_<%= int %>' class="np_nav_button"><%= int == 0 ? "<div class='np_date_select selected'>".html_safe : "<div class='np_date_select'>".html_safe %><div class="weekday"><%= int == 0 ? "Today".html_safe : (Date.today + int).strftime('%a') %></div><div class="month"><%= (Date.today + int).strftime('%b') %></div><div class="day"><%= (Date.today + int).day %></div></div></a><% end %>
 
-<% 7.times do |int| %><a href="#" id='day_<%= int %>' class="np_nav_button"><%= int == 0 ? "<div class='np_date_select selected'>".html_safe : "<div class='np_date_select'>".html_safe %><div class="weekday"><%= int == 0 ? "Today".html_safe : (Date.today + int).strftime('%a') %></div><div class="month"><%= (Date.today + int).strftime('%b') %></div><div class="day"><%= (Date.today + int).day %></div></div></a><% end %>
-
-<% today = Date.today %>
-<% @days.each do |day| %>
-	<%= today == Date.today ? '<div class="showing_day">'.html_safe : '<div class="showing_day hidden">'.html_safe %>
-		<h2><%= today==Date.today ? "Today" : today.strftime('%B %-d, %Y') %></h2>
-		<% if day.empty? %>
-			There are no showtimes for this day.
-		<% else %>
-			<% day.each do |movie, showtimes| %>
-				<p>
-				<%= link_to movie, movie_path(Movie.where(title: movie)[0].id) %>: 
-				<% showtimes.each do |showtime| %>
-					<% if showtime[1] > 0 %>
-						<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0], date: today)[0] ) %>  
-					<% else %>
-						<text class="sold_out"><%= showtime[0].strftime("%-I:%M%p") %></text>
-					<% end %> 
+		<% today = Date.today %>
+		<% @days.each do |day| %>
+			<%= today == Date.today ? '<div class="showing_day">'.html_safe : '<div class="showing_day hidden">'.html_safe %>
+				<% if day.empty? %>
+					There are no showtimes for this day.
+				<% else %>
+					<% day.each do |movie, showtimes| %>
+						<p>
+						<%= link_to movie, movie_path(Movie.where(title: movie)[0].id) %>: 
+						<% showtimes.each do |showtime| %>
+							<% if showtime[1] > 0 %>
+								<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0], date: today)[0] ) %>  
+							<% else %>
+								<text class="sold_out"><%= showtime[0].strftime("%-I:%M%p") %></text>
+							<% end %> 
+						<% end %>
+						</p>
+					<% end %>
 				<% end %>
-				</p>
-			<% end %>
+			</div>
+			<% today += 1 %>
 		<% end %>
 	</div>
-	<% today += 1 %>
-<% end %> 
+</div> 
