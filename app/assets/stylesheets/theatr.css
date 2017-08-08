@@ -151,7 +151,18 @@ p {
 	display: inline-block;
 	height: 6.5em;
     width: 6.5em;
+    background-color: #fff;
+}
+
+.np_date_select:hover {
+    height: 6em;
+	border-bottom: .5em solid #6cc1c1;	
+}
+
+.selected {
     background-color: #0c1917;
+    height: 6em;
+	border-bottom: .5em solid #6cc1c1;
 }
 
 .weekday, .month, .day {
@@ -161,16 +172,25 @@ p {
 }	
 
 .month, .day {
-	color: #fff;
+	color: #0c1917;
 	text-transform: uppercase;
 	font-size: 1.1em;
+	line-height: 1.275em;
 }
 
 .weekday {
-	margin: 1em 0 .75em 0;
-	color: #6cc1c1;
+	margin: .85em 0 .5em 0;
+	color: #333;
 	font-weight: 300;
 	font-size: .9em;
+}
+
+.selected > .month, .selected > .day {
+	color: #fff;
+}
+
+.selected > .weekday {
+	color: #6cc1c1;
 }
 
 @media screen and (max-width:800px){
@@ -183,4 +203,23 @@ p {
 	    margin-top: -35vw;
 	    height: 35vw;
 	}
+	.np_date_select {
+		height: 13vw;
+		width: 13vw;
+	}
+
+	.selected, .np_date_select:hover {
+		height: 11.75vw;
+		border-bottom: 1.25vw solid #6cc1c1;
+	}
+
+	.month, .day {
+		font-size: 2.2vw;
+	}
+
+	.weekday {
+		font-size: 1.8vw;
+		margin: 1.2vw 0;
+	}
+
 }
