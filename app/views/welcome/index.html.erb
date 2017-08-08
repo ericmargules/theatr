@@ -31,18 +31,24 @@
 				<% if day.empty? %>
 					There are no showtimes for this day.
 				<% else %>
-					<% day.each do |movie, showtimes| %>
-						<p>
-						<%= link_to movie, movie_path(Movie.where(title: movie)[0].id) %>: 
-						<% showtimes.each do |showtime| %>
-							<% if showtime[1] > 0 %>
-								<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0], date: today)[0] ) %>  
-							<% else %>
-								<text class="sold_out"><%= showtime[0].strftime("%-I:%M%p") %></text>
-							<% end %> 
+					<div class="movie_showtimes">
+						<% day.each do |movie, showtimes| %>
+							<div class="np_movie_title">
+							<%= link_to movie, movie_path(Movie.where(title: movie)[0].id) %>
+							</div>
+							<div class="np_movie_showtimes"> 
+							<% showtimes.each do |showtime| %>
+								<div class="each_showtime">							
+									<% if showtime[1] > 0 %>
+										<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: Movie.where(title: movie), time: showtime[0], date: today)[0] ) %>  
+									<% else %>
+										<text class="sold_out"><%= showtime[0].strftime("%-I:%M%p") %></text>
+									<% end %> 
+								</div>
+							<% end %>
+							</div>
 						<% end %>
-						</p>
-					<% end %>
+					</div>
 				<% end %>
 			</div>
 			<% today += 1 %>

@@ -165,7 +165,8 @@ p {
 }
 
 #now_playing_header > span {
-	font-family: 'Arial', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
 	text-transform: uppercase;
 	font-size: 1.75em;
 	letter-spacing: .02em;
@@ -224,6 +225,28 @@ p {
 	background-color: #fff;
 }
 
+.movie_showtimes {
+	text-align: left;
+	margin: 0 2.25em;
+}
+
+.movie_showtimes:not(:last-child){
+	padding-bottom: 1.5em;
+	border-bottom: 1px solid black;
+}
+
+.np_movie_title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	margin-bottom: .6em;
+}
+
+.each_showtime {
+	display: inline-block;
+	margin-right: 2em;
+}
+
 @media screen and (max-width:800px){
 
 	#logo {
@@ -231,8 +254,8 @@ p {
 	}
 
 	.movie_poster > a::after {
-	    margin-top: -35vw;
-	    height: 35vw;
+	    margin-top: -50vw;
+	    height: 50vw;
 	}
 	.np_date_select {
 		height: 13vw;
