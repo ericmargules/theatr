@@ -31,8 +31,8 @@
 				<% if day.empty? %>
 					There are no showtimes for this day.
 				<% else %>
-					<div class="movie_showtimes">
-						<% day.each do |movie, showtimes| %>
+					<% day.each do |movie, showtimes| %>
+						<div class="movie_showtimes">
 							<div class="np_movie_title">
 							<%= link_to movie, movie_path(Movie.where(title: movie)[0].id) %>
 							</div>
@@ -47,8 +47,8 @@
 								</div>
 							<% end %>
 							</div>
-						<% end %>
-					</div>
+						</div>
+					<% end %>
 				<% end %>
 			</div>
 			<% today += 1 %>

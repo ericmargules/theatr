@@ -273,4 +273,12 @@ p {
 		margin: 1vw 0 .5vw 0;
 	}
 
+	.np_movie_title {
+	    font-size: 1.25em;
+	}
+
+	.each_showtime {
+		margin-right: 1em;
+	}
+
 }
