@@ -228,8 +228,15 @@ p {
 .movie_showtimes {
 	text-align: left;
 	margin: 0 2.25em;
+}
+
+.movie_showtimes:not(:last-child){
 	padding-bottom: 1.5em;
 	border-bottom: 1px solid black;
+}
+
+.movie_showtimes:not(:first-child){
+	padding-top: 1.5em;
 }
 
 .np_movie_title {
@@ -254,6 +261,11 @@ p {
 	    margin-top: -50vw;
 	    height: 50vw;
 	}
+
+	#now_playing_header > span {
+		font-size: 1.25em;
+	}
+
 	.np_date_select {
 		height: 13vw;
 		width: 13vw;
@@ -271,6 +283,14 @@ p {
 	.weekday {
 		font-size: 2.1vw;
 		margin: 1vw 0 .5vw 0;
+	}
+
+	.movie_showtimes:not(:first-child){
+		padding-top: 1em;
+	}
+
+	.movie_showtimes:not(:last-child){
+		padding-bottom: 1em;
 	}
 
 	.np_movie_title {
