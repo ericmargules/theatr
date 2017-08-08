@@ -228,9 +228,6 @@ p {
 .movie_showtimes {
 	text-align: left;
 	margin: 0 2.25em;
-}
-
-.movie_showtimes:not(:last-child){
 	padding-bottom: 1.5em;
 	border-bottom: 1px solid black;
 }
