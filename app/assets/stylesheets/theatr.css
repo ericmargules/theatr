@@ -50,7 +50,7 @@ p {
 	width: 100%;
 }
 
-.movie_poster > a:after {
+.movie_poster > a:after, #movie_cover_container:after {
 	display: inline-block;
 	position: absolute;
 	bottom: 0;
@@ -65,7 +65,7 @@ p {
 	pointer-events: none;
 }
 
-.movie_poster > a:hover:after {
+.movie_poster > a:hover:after, #movie_cover_container:hover:after {
 	opacity: 0;
 }
 
@@ -87,10 +87,16 @@ p {
 	text-transform: uppercase;
 }
 
-.playing {
+.playing, .length_rating {
 	font-size: .4em;
 	letter-spacing: .15em;
+}
+.playing {
 	color: #6cc1c1;
+}
+
+.length_rating {
+	color: #fff;
 }
 
 .movie_title {
@@ -143,11 +149,16 @@ p {
 	display: none;
 }
 
-.main_poster {
-	max-width: 500px;
+#movie_cover {
+	width: 100%;
 }
 
-#now_playing_gallery{
+#movie_cover_container {
+	width: 100%;
+	overflow: hidden;
+}
+
+#gallery{
 	text-align: center;
 	background-color: #efefef;
 	width: 100%;
@@ -160,11 +171,15 @@ p {
 	padding-bottom: 1.25em;
 }
 
-#now_playing_header {
+#now_playing_header, #synopsis_header {
 	margin-bottom: 1.25em;
 }
 
-#now_playing_header > span {
+#synopsis_header {
+	margin-top: 1em;
+}
+
+#now_playing_header > span, #synopsis_header > span {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 	text-transform: uppercase;
@@ -251,6 +266,37 @@ p {
 	margin-right: 2em;
 }
 
+#movie_header {
+	position: relative;
+	width: 100%;
+}
+
+#movie_info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0 1em 3vw 1em;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 1.75em;
+	text-transform: uppercase;
+	color: #FFF;
+}
+
+.wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+#description {
+	text-align: left;
+	max-width: 668px;
+	margin: 0 auto 2.25em auto;
+	padding: 4em 2em;
+	background-color: #fff;
+}
+
 @media screen and (max-width:800px){
 
 	#logo {
@@ -262,7 +308,7 @@ p {
 	    height: 50vw;
 	}
 
-	#now_playing_header > span {
+	#now_playing_header > span, #synopsis_header > span {
 		font-size: 1.25em;
 	}
 
@@ -299,6 +345,10 @@ p {
 
 	.each_showtime {
 		margin-right: 1em;
+	}
+
+	#description {
+		margin: 0 1em 1.5em 1em;
 	}
 
 }

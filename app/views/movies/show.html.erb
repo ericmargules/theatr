@@ -1,8 +1,55 @@
-<h1><%= @movie.title %></h1>
+<div id="movie_header">
+	<div id="movie_cover_container">
+		<%= image_tag(@movie.cover, :id => "movie_cover", :class => "grow") %>
+	</div>
+	<div id="movie_info">
+		<div class="wrapper">
+			<div class="playing description_field">
+				Now Playing
+			</div>
+			<span id="movie_title"><%= @movie.title %></span>
+			<div class="length_rating description_field">
+				<%= (@movie.length.to_i / 60).to_s + " HR " + (@movie.length.to_i % 60 ).to_s + " MIN | " %><%= @movie.rating %>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="gallery">
+	<div class="wrapper">
+		<div id="synopsis_header">
+			<span>Synopsis</span>
+		</div>
+		<div id="description">
+			<%= @movie.description %>
+		</div>
+	</div>
 
-<%= image_tag(@movie.poster, :class => "main_poster") %>
-<h2><%= @movie.rating %></h2>
-<h2><%= @movie.length %></h2>
-<h2><%= @movie.description %></h2>
+	<div id="now_playing_header">
+		<span>Showtimes</span>
+	</div>
+	<div id="now_playing_content">
+		<% 7.times do |int| %><a href="#" id='day_<%= int %>' class="np_nav_button"><%= int == 0 ? "<div class='np_date_select selected'>".html_safe : "<div class='np_date_select'>".html_safe %><div class="weekday"><%= int == 0 ? "Today".html_safe : (Date.today + int).strftime('%a') %></div><div class="month"><%= (Date.today + int).strftime('%b') %></div><div class="day"><%= (Date.today + int).day %></div></div></a><% end %>
 
-<%= link_to 'Back', root_path %>
+		<% today = Date.today %>
+		<% @days.each do |day| %>
+			<%= today == Date.today ? '<div class="showing_day">'.html_safe : '<div class="showing_day hidden">'.html_safe %>
+				<% if day.empty? %>
+					There are no showtimes for this day.
+				<% else %>
+					<div class="np_movie_showtimes"> 
+						<% day.each do |showtime| %>
+								<div class="each_showtime">							
+									<% if showtime[1] > 0 %>
+										<%= link_to showtime[0].strftime("%-I:%M%p"), new_order_path(:showtime =>Showtime.where(movie: @movie, time: showtime[0], date: today)[0] ) %>  
+									<% else %>
+										<text class="sold_out"><%= showtime[0].strftime("%-I:%M%p") %></text>
+									<% end %> 
+								</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<% today += 1 %>
+		<% end %>
+	</div>
+</div>

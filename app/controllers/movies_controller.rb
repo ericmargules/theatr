@@ -2,11 +2,24 @@ class MoviesController < ApplicationController
 	before_action :user_admin, except: [:show]
 	before_action :set_movie, only: [:show, :edit, :update, :destroy]
 	
+	layout :resolve_layout
+
 	def index
 		@movies = Movie.all
 	end
 
 	def show
+		@days = []
+		day = Date.today
+		7.times do
+			day_array = []
+			showtimes = @movie.showtimes.where(date: day.to_s )
+			showtimes.each do |showtime|
+				day_array << [showtime.time, (showtime.auditorium.capacity - Order.where(showtime: showtime).count)]
+			end
+			@days << day_array
+			day += 1
+		end
 	end
 
 	def new
@@ -60,6 +73,15 @@ class MoviesController < ApplicationController
 	end
 
 	def movie_params
-		params.require(:movie).permit(:title, :description, :poster, :rating, :length, :now_playing)
+		params.require(:movie).permit(:title, :description, :poster, :cover, :rating, :length, :now_playing)
 	end
+
+	def resolve_layout
+	    case action_name
+	      when "show"
+	        "movie"
+	      else
+	        "theatr"
+	    end
+	end 
 end

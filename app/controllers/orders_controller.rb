@@ -63,6 +63,7 @@ class OrdersController < ApplicationController
 	def order_params
 		params.require(:order).permit(:showtime_id, :price, :email, :cc_num, :cc_exp)
 	end
+
 	def resolve_layout
 	    case action_name
 	      when "new"
