@@ -127,6 +127,7 @@ p {
 	margin-top: .75em;
 	-webkit-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
+	cursor: pointer;
 }
 
 .get_tickets:hover {
