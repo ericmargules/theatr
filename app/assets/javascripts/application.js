@@ -18,3 +18,4 @@
 //= stub admin
 //= stub owl.carousel.min
 //= stub now_showing
+//= stub showtime

@@ -2,6 +2,8 @@ class ShowtimesController < ApplicationController
 	before_action :user_admin
 	before_action :set_showtime, only: [:show, :edit, :update, :destroy]
 	
+	layout :resolve_layout
+
 	def index
 		@showtimes = Showtime.all
 	end
@@ -45,6 +47,15 @@ class ShowtimesController < ApplicationController
 	end
 
 	private
+
+	def resolve_layout
+	    case action_name
+	      when "new"
+	        "showtime"
+	      else
+	        "theatr"
+	    end
+	end 
 
     def set_showtime
       @showtime = Showtime.find(params[:id])
