@@ -17,4 +17,4 @@
 //= stub root
 //= stub admin
 //= stub owl.carousel.min
-//= now_showing
+//= stub now_showing

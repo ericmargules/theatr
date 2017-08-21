@@ -43,7 +43,7 @@
     <%= f.label :allday, 'All day?' %><br>
     <%= f.check_box :allday, {checked: true} %>
   </div>
-  <div class="field">
+  <div class="field hidden">
     <%= f.label :time %><br>
     <%= f.time_select :time, {minute_step: 15, ampm: true} %>
   </div>
