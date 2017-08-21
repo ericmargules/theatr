@@ -37,9 +37,6 @@ class ShowtimesController < ApplicationController
 	end
 
 	def destroy
-		Order.where(showtime: @showtime).each do |order|
-			order.destroy
-		end
 		@showtime.destroy
 		respond_to do |format|
 			format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Showtime was removed successfully.' }

@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :showtime
+  belongs_to :showtime, dependent: :destroy
   after_create :order_send
 
   private

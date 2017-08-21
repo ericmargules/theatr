@@ -44,9 +44,6 @@ class AuditoriumsController < ApplicationController
 	end
 
 	def destroy
-		Showtime.where(auditorium: @auditorium).each do |showtime|
-			showtime.destroy
-		end
 		@auditorium.destroy
 		respond_to do |format|
 			format.html { redirect_to :controller => 'welcome', :action => 'admin', notice: 'Auditorium was removed successfully.' }
